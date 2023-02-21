@@ -8,7 +8,13 @@ let App: React.FC = () => {
   let [todo, setTodo] = useState("");
   let [todos, setTodos] = useState<Todo[]>([]);
 
-  let handleAdd = () => {};
+  let handleAdd = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (todo) {
+      setTodos([...todos, { id: Date.now(), todo: todo, isDone: false }]);
+      setTodo("");
+    }
+  };
 
   return (
     <div className="App">
